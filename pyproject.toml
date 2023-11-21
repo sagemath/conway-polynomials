@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conway-polynomials"
+version = "0.6"
+description = "Python interface to Frank Lübeck's Conway polynomial database"
+readme = "README.rst"
+requires-python = ">=3.9"
+keywords = ["mathematics", "algebra", "Conway polynomials"]
+license = { text = "GPL-3.0-or-later" }
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Mathematics",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
