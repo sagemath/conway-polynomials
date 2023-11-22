@@ -1,1 +1,2 @@
 include src/conway_polynomials/CPimport.txt
+include NEWS
