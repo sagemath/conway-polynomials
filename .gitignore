@@ -1,0 +1,8 @@
+# python -m build
+src/conway_polynomials.egg-info/
+src/conway_polynomials/__pycache__/
+dist/
+
+# pip wheel
+build/
+conway_polynomials-*.whl
