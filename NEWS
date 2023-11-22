@@ -1,0 +1,10 @@
+conway-polynomials-0.6 (2023-11-??)
+
+  * This is the first standalone python version of the package.
+
+  * The source repository and issue tracker are now public.
+
+  * The data are no longer pre-processed; we now read the coefficients
+    directly from the upstream file. This is more transparent (easier
+    to verify) and much easier to update if the source data ever
+    changes.
