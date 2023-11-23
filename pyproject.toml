@@ -20,3 +20,10 @@ classifiers = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[project.urls]
+Homepage = "https://github.com/sagemath/conway-polynomials"
+Documentation = "https://github.com/sagemath/conway-polynomials/blob/master/README.rst"
+Repository = "https://github.com/sagemath/conway-polynomials.git"
+Issues = "https://github.com/sagemath/conway-polynomials/issues"
+Changelog = "https://github.com/sagemath/conway-polynomials/raw/master/NEWS"
