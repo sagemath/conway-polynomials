@@ -15,11 +15,11 @@ results for ``p=2`` can be found at,
 
 >>> p = 2; n = 5
 >>> cpdb[p][n]
-[1, 0, 1, 0, 0, 1]
+(1, 0, 1, 0, 0, 1)
 
 >>> p = 2; n = 17
 >>> cpdb[p][17]
-[1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+(1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
 
 """
 
@@ -28,7 +28,7 @@ def _parse_line(l):
     r"""
     Parse a single line (not the first or the last) from Frank
     Lübeck's data file into a triplet (p, n, coeffs), where ``p`` and
-    ``n`` are python integers and ``coeffs`` is a list of
+    ``n`` are python integers and ``coeffs`` is a tuple of
     them. According to Frank's webpage, each line has the form,
 
       [p, n, [a0, a1, ..., 1]],
@@ -46,7 +46,7 @@ def _parse_line(l):
     # Convert everything to integers before returning.
     p = int(fields[0])
     n = int(fields[1])
-    coeffs = [int(c) for c in fields[2:]]
+    coeffs = tuple( int(c) for c in fields[2:] )
 
     return (p, n, coeffs)
 
@@ -59,7 +59,7 @@ def database():
 
     The returned dictionary is of the form ``{p => {n => coeffs}}``,
     where ``p`` is a prime, ``n`` is a degree, and ``coeffs`` is a
-    list of coefficients. The coefficients are listed in "ascending"
+    tuple of coefficients. The coefficients are listed in "ascending"
     order, i.e. they are indexed by the degree of the monomial they
     sit in front of.
 
