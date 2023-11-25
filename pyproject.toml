@@ -9,7 +9,7 @@ description = "Python interface to Frank Lübeck's Conway polynomial database"
 readme = "README.rst"
 requires-python = ">=3.9"
 keywords = ["mathematics", "algebra", "Conway polynomials"]
-license = { text = "GPL-3.0-or-later" }
+license = { file = "COPYING" }
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
