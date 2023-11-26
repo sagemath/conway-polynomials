@@ -50,13 +50,29 @@ True
 def _parse_line(l: str) -> tuple[int, int, tuple[int,...]]:
     r"""
     Parse a single line (not the first or the last) from Frank
-    Lübeck's data file into a triplet (p, n, coeffs), where ``p`` and
-    ``n`` are python integers and ``coeffs`` is a tuple of
-    them. According to Frank's webpage, each line has the form,
+    Lübeck's data file.
+
+    According to Frank's webpage, each line has the form,
 
       [p, n, [a0, a1, ..., 1]],
 
-    but in reality there are no spaces in the data.
+    and corresponds to a single Conway polynomial with prime p and
+    degree n. In reality, there are no spaces in the data.
+
+    Parameters
+    ----------
+
+    l : str
+        A line from the data file.
+
+    Returns
+    -------
+
+    tuple[int, int, tuple[int,...]]
+      A triplet ``(p, n, coeffs)``, where ``p`` and ``n`` are python
+      integers representing the prime and degree of this polynomial,
+      respectively, and ``coeffs`` is a tuple of its coefficients.
+
     """
     # Remove all of the brackets, the trailing comma, and the trailing
     # newline to obtain "p, n, a0, a1, ..., 1".
@@ -79,16 +95,21 @@ _conway_dict: Optional[ dict[int,dict[int,tuple[int,...]]] ]
 _conway_dict = None    # cached result of database()
 def database() -> dict[int,dict[int,tuple[int,...]]]:
     r"""
-    Load (if necessary) and return a python dictionary of Conway
+    Load (if necessary) and return a dict of pre-computed Conway
     polynomial coefficients.
 
-    The returned dictionary is of the form ``{p => {n => coeffs}}``,
-    where ``p`` is a prime, ``n`` is a degree, and ``coeffs`` is a
-    tuple of coefficients. The coefficients are listed in "ascending"
-    order, i.e. they are indexed by the degree of the monomial they
-    sit in front of.
-
     The result is cached.
+
+    Returns
+    -------
+
+    dict
+      A dictionary of the form ``{p: {n: coefficients}}``, where ``p``
+      is a prime, ``n`` is a degree, and ``coefficients`` is a tuple
+      of coefficients. The coefficients are listed in "ascending"
+      order; that is, they are indexed by the degree of the monomial
+      they sit in front of.
+
     """
     global _conway_dict
 
