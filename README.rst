@@ -36,7 +36,7 @@ degree n=5::
   >>> import conway_polynomials
   >>> cpdb = conway_polynomials.database()
   >>> cpdb[2][5]
-  (1, 0, 2, 0, 0, 5)
+  (1, 0, 1, 0, 0, 1)
 
 The result is cached, so subsequent computations should be fast even
 if you call the function again::
