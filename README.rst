@@ -47,8 +47,10 @@ if you call the function again::
 Testing
 =======
 
-A few doctests within the module verify that everything is
-working. You can run them from the repository or from a
+A few doctests within the module (and this README) ensure that
+everything is working. You can run them from the repository or from a
 release tarball using::
 
-  PYTHONPATH=src python -m doctest src/conway_polynomials/__init__.py
+  PYTHONPATH=src python -m doctest \
+    README.rst \
+    src/conway_polynomials/__init__.py
