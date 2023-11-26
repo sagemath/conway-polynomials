@@ -1,3 +1,15 @@
+conway-polynomials-0.8 (2023-11-26)
+
+  * Include LICENSE and COPYING in the distribution.
+
+  * Fix an example in README.rst, and include README.rst in the
+    example doctest command.
+
+  * Add a few more test cases including a random property test.
+
+  * Add type hints and clean up the documentation.
+
+
 conway-polynomials-0.7 (2023-11-24)
 
   * Use tuples instead of lists for the coefficients.
