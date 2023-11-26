@@ -33,6 +33,17 @@ results for ``p=2`` can be found at,
 >>> cpdb[p][n]
 (2, 40009, 1)
 
+If ``n`` is the degree of our polynomial, there should be ``n+1``
+coefficients, the last of which is unity by definition::
+
+>>> from random import choice
+>>> p = choice(list(cpdb.keys()))
+>>> n = choice(list(cpdb[p].keys()))
+>>> len(cpdb[p][n]) == n + 1
+True
+>>> cpdb[p][n][n] == 1
+True
+
 """
 
 
