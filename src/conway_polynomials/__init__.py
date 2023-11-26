@@ -98,7 +98,7 @@ def database() -> dict[int,dict[int,tuple[int,...]]]:
     _conway_dict = {}
     from importlib.resources import files
     dbpath = files('conway_polynomials').joinpath('CPimport.txt')
-    with open(dbpath, "rt") as f:
+    with dbpath.open("r") as f:
         # The first line of the file is "allConwayPolynomials := ["
         f.readline()
 
