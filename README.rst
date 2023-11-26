@@ -41,8 +41,20 @@ degree n=5::
 The result is cached, so subsequent computations should be fast even
 if you call the function again::
 
-  >>> conway_polynomials.database()[5][5]
+  >>> conway_polynomials.database() is conway_polynomials.database()
+  True
+
+However, the result is also mutable, so if you need to modify it for
+some reason then you should create a copy; otherwise your changes will
+affect future calls::
+
+  >>> cpdb = conway_polynomials.database()
+  >>> cpdb[5][5]
   (3, 4, 0, 0, 0, 1)
+  >>> cpdb[5][5] = (8, 6, 7, 5, 3, 0, 9)
+  >>> conway_polynomials.database()[5][5]
+  (8, 6, 7, 5, 3, 0, 9)
+
 
 Testing
 =======
