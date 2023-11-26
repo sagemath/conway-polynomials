@@ -47,7 +47,7 @@ True
 """
 
 
-def _parse_line(l):
+def _parse_line(l: str) -> tuple[int, int, tuple[int,...]]:
     r"""
     Parse a single line (not the first or the last) from Frank
     Lübeck's data file into a triplet (p, n, coeffs), where ``p`` and
@@ -74,8 +74,10 @@ def _parse_line(l):
     return (p, n, coeffs)
 
 
-_conway_dict = None  # cached result of database()
-def database():
+from typing import Optional
+_conway_dict: Optional[ dict[int,dict[int,tuple[int,...]]] ]
+_conway_dict = None    # cached result of database()
+def database() -> dict[int,dict[int,tuple[int,...]]]:
     r"""
     Load (if necessary) and return a python dictionary of Conway
     polynomial coefficients.
