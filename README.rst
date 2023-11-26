@@ -13,7 +13,7 @@ SageMath to provide quick access to those Conway polynomials. The aim
 of this package is to make them available through a generic python
 interface. The package consists of a single module containing a single
 function that returns a dict of dicts, ``conway_polynomials.database()``.
-The dictionary's format is ``{p => {n => coefficients}}``, where ``p``
+The dictionary's format is ``{p: {n: coefficients}}``, where ``p``
 represents your prime and ``n`` your degree. The tuple of coefficients
 is returned in ascending order; that is, the first coefficient (at
 index zero) is for the constant (degree zero) term.
