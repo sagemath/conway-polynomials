@@ -27,3 +27,6 @@ Documentation = "https://github.com/sagemath/conway-polynomials/blob/master/READ
 Repository = "https://github.com/sagemath/conway-polynomials.git"
 Issues = "https://github.com/sagemath/conway-polynomials/issues"
 Changelog = "https://github.com/sagemath/conway-polynomials/raw/master/NEWS"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules --doctest-glob='*.rst'"
