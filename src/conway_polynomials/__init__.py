@@ -89,6 +89,17 @@ def _parse_line(l: str) -> tuple[int, int, tuple[int,...]]:
 
     return (p, n, coeffs)
 
+def _open_database():
+    r"""
+    Open the database, possibly xz compressed.
+    """
+    from importlib.resources import files
+    dbpath = files('conway_polynomials').joinpath('CPimport.txt')
+    try:
+        import lzma
+        return lzma.open(dbpath.with_suffix(".txt.xz"), "rt")
+    except FileNotFoundError:
+        return dbpath.open("r")
 
 from typing import Optional
 _conway_dict: Optional[ dict[int,dict[int,tuple[int,...]]] ]
@@ -117,9 +128,7 @@ def database() -> dict[int,dict[int,tuple[int,...]]]:
         return _conway_dict
 
     _conway_dict = {}
-    from importlib.resources import files
-    dbpath = files('conway_polynomials').joinpath('CPimport.txt')
-    with dbpath.open("r") as f:
+    with _open_database() as f:
         # The first line of the file is "allConwayPolynomials := ["
         f.readline()
 
