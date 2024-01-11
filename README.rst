@@ -66,3 +66,7 @@ release tarball using::
   PYTHONPATH=src python -m doctest \
     README.rst \
     src/conway_polynomials/__init__.py
+
+Or, if you have pytest installed, with simply::
+
+  pytest
