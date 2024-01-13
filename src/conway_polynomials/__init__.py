@@ -92,6 +92,12 @@ def _parse_line(l: str) -> tuple[int, int, tuple[int,...]]:
 def _open_database():
     r"""
     Open the database, possibly xz compressed.
+
+    Typically, the build/install process for the package will compress
+    the database and remove the uncompressed copy. During development,
+    however, it would be annoying to have to build/install the package
+    to a temporary location before the test suite could be run. For
+    that reason we retain the uncompressed filename as a fallback.
     """
     from importlib.resources import files
     dbpath = files('conway_polynomials').joinpath('CPimport.txt')
