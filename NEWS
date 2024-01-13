@@ -1,3 +1,10 @@
+conway-polynomials-0.9 (2024-01-12)
+
+  * Support for pytest (just run "pytest").
+
+  * The database is now xz compressed during the "build."
+
+
 conway-polynomials-0.8 (2023-11-26)
 
   * Include LICENSE and COPYING in the distribution.
