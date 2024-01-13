@@ -46,6 +46,8 @@ True
 
 """
 
+from typing import Optional, TextIO
+
 
 def _parse_line(l: str) -> tuple[int, int, tuple[int,...]]:
     r"""
@@ -89,7 +91,7 @@ def _parse_line(l: str) -> tuple[int, int, tuple[int,...]]:
 
     return (p, n, coeffs)
 
-def _open_database():
+def _open_database() -> TextIO:
     r"""
     Open the database, possibly xz compressed.
 
@@ -98,16 +100,29 @@ def _open_database():
     however, it would be annoying to have to build/install the package
     to a temporary location before the test suite could be run. For
     that reason we retain the uncompressed filename as a fallback.
-    """
-    from importlib.resources import files
-    dbpath = files('conway_polynomials').joinpath('CPimport.txt')
-    try:
-        import lzma
-        return lzma.open(dbpath.with_suffix(".txt.xz"), "rt")
-    except FileNotFoundError:
-        return dbpath.open("r")
 
-from typing import Optional
+    Returns
+    -------
+
+    file : TextIO
+      A file-like object, opened for reading in text mode, representing the
+      database.
+
+    """
+    import lzma
+    from importlib.resources import as_file, files
+    from io import TextIOWrapper
+
+    dbpath = files('conway_polynomials').joinpath('CPimport.txt')
+    with as_file(dbpath) as p:
+        try:
+            # Open as binary and wrap in TextIO to guarantee
+            # that the return type is correct.
+            return TextIOWrapper(lzma.open(p.with_suffix(".txt.xz")))
+        except FileNotFoundError:
+            return open(p, "r")
+
+
 _conway_dict: Optional[ dict[int,dict[int,tuple[int,...]]] ]
 _conway_dict = None    # cached result of database()
 def database() -> dict[int,dict[int,tuple[int,...]]]:
